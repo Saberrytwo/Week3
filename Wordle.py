@@ -18,7 +18,7 @@ def wordle():
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
-    random_word = random.choice(FIVE_LETTER_WORDS).upper()
+    random_word = random.choice(FIVE_LETTER_WORDS)
     print(random_word)
 
     for i, letter in enumerate(random_word):
