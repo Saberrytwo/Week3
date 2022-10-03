@@ -12,8 +12,13 @@ from WordleGraphics import WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
 
-    def enter_action(s):
-        gw.show_message("You have to implement this method.")
+    def enter_action(s): # Milestone 2 function
+        s = s.lower()
+        if s in wordList:
+            gw.show_message("This is a valid guess")
+        else:
+            gw.show_message("Not in Word List")
+    wordList = set(FIVE_LETTER_WORDS)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
@@ -23,14 +28,6 @@ def wordle():
 
     for i, letter in enumerate(random_word):
         gw.set_square_letter(0, i, letter)
-
-    def enter_action(s): # Milestone 2 function
-        s = s.lower()
-        if s in wordList:
-            gw.show_message("This is a valid guess")
-        else:
-            gw.show_message("Not in Word List")
-    wordList = set(FIVE_LETTER_WORDS)
 
 if __name__ == "__main__":
     wordle()
