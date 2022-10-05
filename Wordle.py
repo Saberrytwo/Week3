@@ -18,7 +18,11 @@ def wordle():
 
     def enter_action(s): # Milestone 2 function
         s = s.lower()
-        if s in wordList:
+        if s == target_word:
+            gw.show_message("Congrats. You did it. I'm so proud of you :)")
+            color_letters(target_word, s, currentRow)
+            pass
+        elif s in wordList:
             gw.show_message("This is a valid guess")
             currentRow = gw.get_current_row()
             color_letters(target_word, s, currentRow)
