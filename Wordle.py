@@ -29,6 +29,7 @@ def wordle():
                 currentRow = gw.get_current_row()
                 color_letters(target_word, s, currentRow)
                 gw.set_current_row(currentRow + 1)
+
         else:
             gw.show_message("Not in Word List")
 
@@ -55,7 +56,6 @@ def wordle():
             if location != -1:
                 gw.set_square_color(current_row, index, PRESENT_COLOR)
                 target_buffer = target_buffer[:location] + "0" + target_buffer[location+1:]
-
 
 if __name__ == "__main__":
     wordle()
