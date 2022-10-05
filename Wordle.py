@@ -20,16 +20,19 @@ def wordle():
         s = s.lower()
         if s in wordList:
             gw.show_message("This is a valid guess")
-            color_letters(target_word, s, 0)
+            currentRow = gw.get_current_row()
+            color_letters(target_word, s, currentRow)
+            gw.set_current_row(currentRow + 1)
         else:
             gw.show_message("Not in Word List")
+
     wordList = set(FIVE_LETTER_WORDS)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
+    # Milestone 3
     def color_letters(target_word, guess_word, current_row):
-
         target_buffer = target_word
         guess_buffer = guess_word
 
@@ -39,7 +42,7 @@ def wordle():
                 target_buffer = target_buffer[:index] + "0" + target_buffer[index+1:]
                 guess_buffer = guess_buffer[:index] + "0" + guess_buffer[index+1:]
         
-        for index, letter in enumerate(guess_buffer):
+        for index, letter in enumerate(guess_buffer): 
             if guess_buffer[index] == "0":
                 continue
             location = target_buffer.find(guess_buffer[index])
