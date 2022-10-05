@@ -96,11 +96,12 @@ class WordleGWindow:
                                  MESSAGE_Y)
 
         def key_action(tke):
+            print(tke.keycode)
             if isinstance(tke, str):
                 ch = tke.upper()
             else:
                 ch = tke.char.upper()
-            if ch == "\007" or ch == "\177" or ch == "DELETE":
+            if ch == "\007" or ch == "\177" or ch == "DELETE" or ch=="\x08" or tke.keycode == 46:
                 self.show_message("")
                 if self._row < N_ROWS and self._col > 0:
                     self._col -= 1
@@ -120,7 +121,7 @@ class WordleGWindow:
                     sq.set_letter(ch)
                     self._col += 1
 
-        def press_action(tke):
+        def press_action(tke): #Nope
             self._down_x = tke.x
             self._down_y = tke.y
             self._down_time = time.time()
@@ -134,11 +135,13 @@ class WordleGWindow:
                         if key:
                             key_action(key._label)
 
-        def find_key(x, y):
+        def find_key(x, y): #Nope
             for key in self._keys.values():
                 kx, ky, kw, kh = key._bounds
                 if x >= kx and x <= kx + kw and y >= ky and y <= ky + kh:
+                    
                     return key
+            
             return None 
 
         def delete_window():
