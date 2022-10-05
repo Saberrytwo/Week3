@@ -9,7 +9,7 @@ BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
 import random
 
 from WordleDictionary import FIVE_LETTER_WORDS
-from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, WordleGWindow, N_COLS, N_ROWS
+from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
 
@@ -45,6 +45,7 @@ def wordle():
                 gw.set_square_color(current_row, index, CORRECT_COLOR)
                 target_buffer = target_buffer[:index] + "0" + target_buffer[index+1:]
                 guess_buffer = guess_buffer[:index] + "0" + guess_buffer[index+1:]
+                gw.set_key_color(letter.upper(), CORRECT_COLOR)
         
         for index, letter in enumerate(guess_buffer): 
             if guess_buffer[index] == "0":
@@ -53,6 +54,14 @@ def wordle():
             if location != -1:
                 gw.set_square_color(current_row, index, PRESENT_COLOR)
                 target_buffer = target_buffer[:location] + "0" + target_buffer[location+1:]
+                guess_buffer = guess_buffer[:index] + "0" + guess_buffer[index+1:]
+                if (gw.get_key_color(letter.upper()) != CORRECT_COLOR):
+                    gw.set_key_color(letter.upper(), PRESENT_COLOR)
+        
+        for index, letter in enumerate(guess_buffer):
+            if guess_buffer[index] == "0":
+                continue
+            gw.set_key_color(letter.upper(), MISSING_COLOR)
 
 if __name__ == "__main__":
     wordle()
