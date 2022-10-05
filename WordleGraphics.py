@@ -96,7 +96,7 @@ class WordleGWindow:
                                  MESSAGE_Y)
 
         def key_action(tke):
-            print(tke.keycode)
+            # print(tke.keycode)
             if isinstance(tke, str):
                 ch = tke.upper()
             else:

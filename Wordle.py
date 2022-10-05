@@ -18,7 +18,9 @@ def wordle():
     target_word = random.choice(FIVE_LETTER_WORDS)
     print(target_word)
 
+    
     def enter_action(s): # Milestone 2 function
+        
         s = s.lower()
         if s in wordList:
             if s == target_word:
