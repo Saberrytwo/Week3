@@ -13,16 +13,22 @@ from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, WordleGWindow, N_COLS, 
 
 def wordle():
 
+
+
     target_word = random.choice(FIVE_LETTER_WORDS)
     print(target_word)
 
     def enter_action(s): # Milestone 2 function
         s = s.lower()
         if s in wordList:
-            gw.show_message("This is a valid guess")
-            currentRow = gw.get_current_row()
-            color_letters(target_word, s, currentRow)
-            gw.set_current_row(currentRow + 1)
+            if s == target_word:
+                gw.show_message("Congrats you guessed it!")
+                currentRow = gw.get_current_row()
+                color_letters(target_word, s, currentRow)
+            else:
+                currentRow = gw.get_current_row()
+                color_letters(target_word, s, currentRow)
+                gw.set_current_row(currentRow + 1)
         else:
             gw.show_message("Not in Word List")
 

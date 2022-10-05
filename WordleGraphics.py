@@ -139,7 +139,7 @@ class WordleGWindow:
                 kx, ky, kw, kh = key._bounds
                 if x >= kx and x <= kx + kw and y >= ky and y <= ky + kh:
                     return key
-            return None
+            return None 
 
         def delete_window():
             """Closes the window and exits from the event loop."""
@@ -148,6 +148,7 @@ class WordleGWindow:
         def start_event_loop():
             """Starts the tkinter event loop when the program exits."""
             root.mainloop()
+
 
         root = tkinter.Tk()
         root.title("Wordle")
@@ -173,9 +174,10 @@ class WordleGWindow:
 
     def get_square_letter(self, row, col):
         return self._grid[row][col].get_letter()
+    
 
     def set_square_letter(self, row, col, ch):
-        self._grid[row][col].set_letter(ch)
+        self._grid[row][col].set_letter(ch) 
 
     def get_square_color(self, row, col):
         return self._grid[row][col].get_color()
@@ -204,6 +206,9 @@ class WordleGWindow:
 
     def show_message(self, msg, color="Black"):
         self._message.set_text(msg, color)
+        
+    
+
 
 
 class WordleSquare:
