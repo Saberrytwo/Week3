@@ -20,10 +20,10 @@ def wordle():
         s = s.lower()
         if s == target_word:
             gw.show_message("Congrats. You did it. I'm so proud of you :)")
+            currentRow = gw.get_current_row()
             color_letters(target_word, s, currentRow)
             pass
         elif s in wordList:
-            gw.show_message("This is a valid guess")
             currentRow = gw.get_current_row()
             color_letters(target_word, s, currentRow)
             gw.set_current_row(currentRow + 1)
@@ -53,7 +53,6 @@ def wordle():
             if location != -1:
                 gw.set_square_color(current_row, index, PRESENT_COLOR)
                 target_buffer = target_buffer[:location] + "0" + target_buffer[location+1:]
-
 
 if __name__ == "__main__":
     wordle()
