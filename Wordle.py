@@ -62,7 +62,8 @@ def wordle():
                 guess_buffer = guess_buffer[:index] + "0" + guess_buffer[index+1:]
                 if (gw.get_key_color(letter.upper()) != CORRECT_COLOR):
                     gw.set_key_color(letter.upper(), PRESENT_COLOR)
-        
+            else:
+                gw.set_square_color(current_row, index, MISSING_COLOR)
         for index, letter in enumerate(guess_buffer):
             if guess_buffer[index] == "0":
                 continue
