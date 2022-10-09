@@ -1,5 +1,4 @@
 # File: Wordle.py
-# Test, can Solomon finally edit??
 
 """
 This module is the starter file for the Wordle assignment.
@@ -14,12 +13,12 @@ from WordleGraphics import CORRECT_COLOR, MISSING_COLOR, PRESENT_COLOR, WordleGW
 def wordle():
 
 
-
-    target_word = random.choice(FIVE_LETTER_WORDS)
+    wordList = set(FIVE_LETTER_WORDS)
+    target_word = random.choice(FIVE_LETTER_WORDS) # Sets a target word. We originally output this on the first line for Milestone 1, and now just output it in the console
     print(target_word)
 
     
-    def enter_action(s): # Milestone 2 function
+    def enter_action(s): # Milestone 2 function, checks if the guessed word is in the wordlist upon them entering it
         
         s = s.lower()
         if s in wordList:
@@ -35,13 +34,13 @@ def wordle():
         else:
             gw.show_message("Not in Word List")
 
-    wordList = set(FIVE_LETTER_WORDS)
 
     gw = WordleGWindow()
     gw.add_enter_listener(enter_action)
 
-    # Milestone 3
-    def color_letters(target_word, guess_word, current_row):
+    # Milestone 3 & 4
+    def color_letters(target_word, guess_word, current_row): # This function colors the letters and squares 
+        # that were guessed, depending on if it was in the word and if it was in the right spot
         target_buffer = target_word
         guess_buffer = guess_word
 
